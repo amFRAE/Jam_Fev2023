@@ -17,6 +17,7 @@ public class Racine : MonoBehaviour
 	[Header("Indicateurs")]
 	[Tooltip("Pourcentage de croissance de la racine")]
 	[SerializeField][Range(0, 100)] private float growth = 0;
+	[SerializeField][Range(0, 100)] private float hp = 100;
 	[Space]
 	[Space]
 	[Header("Paramètres")]
@@ -38,10 +39,16 @@ public class Racine : MonoBehaviour
 	public void Tick()
 	{
 		//Donner info si on print
-		printer(gameObject.name + " a reçu un tick !");
+		//printer(gameObject.name + " a reçu un tick !");
 
 		//Faire grandir la racine
 		growthPercentage = growthPercentage + growthPerTick;
+	}
+
+	public void TakeDamage(float damage)
+	{
+		printer("La racine pris " + damage + " dégâts ! Vie restante : " + hp);
+		hp = hp + (damage * -1);
 	}
 
 	//Fonctions mineures

@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
 
     private Rigidbody2D rb;
-
+    private Vector3 target;
+    private bool surRacine = false;
 
     [HideInInspector] public bool cursor = false;
     [Header("Parametres")]
@@ -15,69 +17,92 @@ public class Enemy : MonoBehaviour
     public float speed = 5;
     [Range(1, 100)] public float damage = 2;
 
-    private void Awake()
+    //Invokers
+    private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-    }
-    private void Update()
+
+        //Définir cible; un bout de racine random.
+        List<GameObject> bouts = GameObject.Find("GAMEMANAGER").GetComponent<GAMEMANAGER>().Bouts;
+        int id = Random.Range(0, bouts.Count - 1);
+        print("Bouts is from 0 to " + (bouts.Count - 1) + ". Chosen ID is " + id);
+        target = bouts[id].transform.position;
+		transform.up = target - transform.position;
+	}
+	private void OnEnable()
+	{
+		Rotation();
+	}
+	private void OnMouseEnter()
+	{
+        isCursor(true);
+	}
+	private void OnMouseExit()
+	{
+		isCursor(false);
+	}
+	private void Update()
     {
         Hit();
     }
-
-    private void FixedUpdate()
+	private void FixedUpdate()
     {
         Move();
     }
+	private void OnTriggerEnter2D(Collider2D col)
+	{
+        if (col.gameObject.tag == "Racine_Bout")
+        {
+            surRacine = true;
+            transform.Find("Fourmis_Anim").GetComponent<Animator>().SetBool("attacking", true);
+        }
+	}
 
-    public void States(bool states)
+	//Fonctions majeures
+	private void Hit()
     {
-        cursor = states;
-
-    }
-
-    private void Hit()
-    {
-        if(Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButtonDown(0) && cursor)
         {
             hp--;
         }
         if(hp <= 0)
         {
+            //Se retirer de la liste des objets devant recevoir des ticks
+            GameObject.Find("GAMEMANAGER").GetComponent<GAMEMANAGER>().tickReceiver.Remove(this.gameObject);
+
             Destroy(gameObject);
         }
     }
-
     private void Move()
     {
-        rb.velocity = transform.up * speed;
+        if (!surRacine)
+        {
+			rb.velocity = transform.up * speed;
+		}
+        else if (surRacine)
+        {
+            rb.velocity = new Vector2(0, 0);
+        }
     }
-
-    private void OnEnable()
-    {
-        Rotation();
-    }
-
     private void Rotation()
     {
-        Vector3 racinepos = GameObject.Find("ProtoRacine").transform.position;
-        transform.up = racinepos - transform.position;
-    }
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if(other.name == "cursor")
+        if (gameObject.tag == "Enemy_Fourmi")
         {
-            cursor = true;
-            print("Cursor enter");
+            transform.up = new Vector3(target.x, target.y - 0.7f, 0) - transform.position;
+		}
+	}
+    public void Tick()
+    {
+        if (surRacine)
+        {
+            GameObject.FindGameObjectWithTag("Racine").GetComponent<Racine>().TakeDamage(damage);
         }
     }
 
-    private void OnTriggerExit2D(Collider2D other)
+    //Fonctions mineures
+    private void isCursor(bool state)
     {
-        if (other.name == "cursor")
-        {
-            cursor = false;
-            print("Cursor leave");
-        }
+        cursor = state;
     }
 
 }
