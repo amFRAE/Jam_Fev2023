@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 
@@ -69,8 +70,9 @@ public class Enemy : MonoBehaviour
         {
             //Se retirer de la liste des objets devant recevoir des ticks
             GameObject.Find("GAMEMANAGER").GetComponent<GAMEMANAGER>().tickReceiver.Remove(this.gameObject);
+            GameObject.Find("GAMEMANAGER").GetComponent<GAMEMANAGER>().STAT_INSECT++;
 
-            Destroy(gameObject);
+			Destroy(gameObject);
         }
     }
     private void Move()

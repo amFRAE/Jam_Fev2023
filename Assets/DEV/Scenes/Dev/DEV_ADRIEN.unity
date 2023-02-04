@@ -383,7 +383,7 @@ MonoBehaviour:
   doPrint: 0
   growth: 0
   hp: 100
-  growthPerTick: 10
+  growthPerTick: 0.84
 --- !u!114 &509650230
 MonoBehaviour:
   m_ObjectHideFlags: 0
