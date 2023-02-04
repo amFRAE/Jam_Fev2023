@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7101120080467353113}
   - component: {fileID: 7101120080467353112}
+  - component: {fileID: 1443343243339537169}
   - component: {fileID: 7101120080467353115}
   - component: {fileID: 7101120080467353114}
   - component: {fileID: 7101120080467353110}
@@ -28,7 +29,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7101120080467353117}
-  m_LocalRotation: {x: -0, y: -0, z: -0.3552843, w: 0.93475837}
+  m_LocalRotation: {x: 0, y: 0, z: -0.35528648, w: 0.9347575}
   m_LocalPosition: {x: -8.310188, y: -4.2933254, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -88,6 +89,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1443343243339537169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7101120080467353117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd9dea23b38c2dc4c8524a5ba89d366b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7101120080467353115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,39 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 7101120080467353115}
-          m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
-          m_MethodName: States
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 7101120080467353115}
-          m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
-          m_MethodName: States
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+  m_Delegates: []
 --- !u!58 &7101120080467353110
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -184,5 +165,5 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0

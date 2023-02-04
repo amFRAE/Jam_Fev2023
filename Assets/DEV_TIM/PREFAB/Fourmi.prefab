@@ -10,10 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2681775162947261455}
   - component: {fileID: 2681775162947261454}
+  - component: {fileID: 7164950020519269511}
   - component: {fileID: 2681775162947261453}
   - component: {fileID: 2681775162947261452}
-  - component: {fileID: 2681775162947261440}
   - component: {fileID: 2681775162947261441}
+  - component: {fileID: 6088194527279610469}
   m_Layer: 0
   m_Name: Fourmi
   m_TagString: Enemy_Fourmi
@@ -28,11 +29,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2681775162947261451}
-  m_LocalRotation: {x: -0, y: -0, z: -0.3552843, w: 0.93475837}
+  m_LocalRotation: {x: 0, y: 0, z: -0.35528648, w: 0.9347575}
   m_LocalPosition: {x: -8.310188, y: -4.2933254, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2370447028989043101}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -41.622}
@@ -78,7 +80,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -88,6 +90,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7164950020519269511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2681775162947261451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd9dea23b38c2dc4c8524a5ba89d366b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2681775162947261453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,22 +163,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!58 &2681775162947261440
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2681775162947261451}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
 --- !u!50 &2681775162947261441
 Rigidbody2D:
   serializedVersion: 4
@@ -186,3 +184,91 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!61 &6088194527279610469
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2681775162947261451}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.11676234, y: -0.07305995}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.28866667}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.9460584, y: 1.0181351}
+  m_EdgeRadius: 0
+--- !u!1001 &7421673744281097340
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2681775162947261455}
+    m_Modifications:
+    - target: {fileID: 5051510397923915233, guid: 0a3acc8c3fa88c4418b487198d5b06e5, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5051510397923915233, guid: 0a3acc8c3fa88c4418b487198d5b06e5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5051510397923915233, guid: 0a3acc8c3fa88c4418b487198d5b06e5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5051510397923915233, guid: 0a3acc8c3fa88c4418b487198d5b06e5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5051510397923915233, guid: 0a3acc8c3fa88c4418b487198d5b06e5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5051510397923915233, guid: 0a3acc8c3fa88c4418b487198d5b06e5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5051510397923915233, guid: 0a3acc8c3fa88c4418b487198d5b06e5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5051510397923915233, guid: 0a3acc8c3fa88c4418b487198d5b06e5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5051510397923915233, guid: 0a3acc8c3fa88c4418b487198d5b06e5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5051510397923915233, guid: 0a3acc8c3fa88c4418b487198d5b06e5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5051510397923915233, guid: 0a3acc8c3fa88c4418b487198d5b06e5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5051510397923915239, guid: 0a3acc8c3fa88c4418b487198d5b06e5, type: 3}
+      propertyPath: m_Name
+      value: Fourmis_Anim
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0a3acc8c3fa88c4418b487198d5b06e5, type: 3}
+--- !u!4 &2370447028989043101 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5051510397923915233, guid: 0a3acc8c3fa88c4418b487198d5b06e5, type: 3}
+  m_PrefabInstance: {fileID: 7421673744281097340}
+  m_PrefabAsset: {fileID: 0}

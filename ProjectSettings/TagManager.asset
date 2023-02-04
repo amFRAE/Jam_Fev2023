@@ -8,6 +8,7 @@ TagManager:
   - Enemy_Fourmi
   - Enemy_Ver
   - Enemy_Grillon
+  - Racine_Bout
   layers:
   - Default
   - TransparentFX
