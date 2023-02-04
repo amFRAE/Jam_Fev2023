@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class GAMEMANAGER : MonoBehaviour
@@ -13,18 +12,24 @@ public class GAMEMANAGER : MonoBehaviour
 
     //Variables "grab"
     [NonSerialized] public double secondsElapsed = 0;
+	[NonSerialized] public List<GameObject> Bouts = new List<GameObject>();
+	[NonSerialized] public List<GameObject> tickReceiver = new List<GameObject>();
 
-    [Header("DEBUG")]
+	[Header("DEBUG")]
     [SerializeField] private bool doPrint = false;
-    [Space]
+    [Header("Indicateures")]
+    [SerializeField] private List<GameObject> allBouts;
+	[Space]
+	[Space]
+	[Space]
     [Space]
 	[Header("Paramètres")]
     [Header("- Ticks")]
     [Tooltip("Toutes les combien de secondes est-ce qu'un tick arrive [Défaut = 1]")]
     public float tickRate = 1;
 
-    //Invokers
-    void Awake()
+	//Invokers
+	void Awake()
     {
         Init();
     }
@@ -33,12 +38,35 @@ public class GAMEMANAGER : MonoBehaviour
         //Démarrer boucle des ticks
         Invoke("doTick", 1);
 	}
+	private void Update()
+	{
+        Indicateurs();
+	}
 
 	//Fonctions majeures
-    void doTick()
+	void doTick()
     {
-        //Envoyer event "tick" aux GameObjects
-        GameObject.FindGameObjectWithTag("Racine").GetComponent<Racine>().Tick(); //... à la racine
+        foreach (GameObject receiver in tickReceiver)
+        {
+            switch (receiver.tag)
+            {
+                case "Racine":
+                    receiver.GetComponent<Racine>().Tick();
+                    break;
+
+                case "Enemy_Grillon":
+                    receiver.GetComponent<Enemy>().Tick();
+                    break;
+
+				case "Enemy_Ver":
+					receiver.GetComponent<Enemy>().Tick();
+					break;
+
+				case "Enemy_Fourmi":
+					receiver.GetComponent<Enemy>().Tick();
+					break;
+			}
+        }
 
         //Boucle
         secondsElapsed++;
@@ -61,5 +89,10 @@ public class GAMEMANAGER : MonoBehaviour
         {
             print(message);
         }
+    }
+
+    private void Indicateurs()
+    {
+        allBouts = Bouts;
     }
 }
