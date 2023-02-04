@@ -8,10 +8,13 @@ public class GAMEMANAGER : MonoBehaviour
     //Variables static
     public static GAMEMANAGER i;
 
-    //Variables internes
 
     //Variables "grab"
+    [NonSerialized] public string gameState = "Playing";
     [NonSerialized] public double secondsElapsed = 0;
+    [NonSerialized] public int STAT_INSECT = 0;
+	[NonSerialized] public int STAT_CROISSANCE = 0;
+    [NonSerialized] public int STAT_CHAMPI = 0;
 	[NonSerialized] public List<GameObject> Bouts = new List<GameObject>();
 	[NonSerialized] public List<GameObject> tickReceiver = new List<GameObject>();
 
@@ -46,31 +49,35 @@ public class GAMEMANAGER : MonoBehaviour
 	//Fonctions majeures
 	void doTick()
     {
-        foreach (GameObject receiver in tickReceiver)
+        if (gameState == "Playing")
         {
-            switch (receiver.tag)
-            {
-                case "Racine":
-                    receiver.GetComponent<Racine>().Tick();
-                    break;
+			foreach (GameObject receiver in tickReceiver)
+			{
+				switch (receiver.tag)
+				{
+					case "Racine":
+						receiver.GetComponent<Racine>().Tick();
+						break;
 
-                case "Enemy_Grillon":
-                    receiver.GetComponent<Enemy>().Tick();
-                    break;
+					case "Enemy_Grillon":
+						receiver.GetComponent<Enemy>().Tick();
+						break;
 
-				case "Enemy_Ver":
-					receiver.GetComponent<Enemy>().Tick();
-					break;
+					case "Enemy_Ver":
+						receiver.GetComponent<Enemy>().Tick();
+						break;
 
-				case "Enemy_Fourmi":
-					receiver.GetComponent<Enemy>().Tick();
-					break;
+					case "Enemy_Fourmi":
+						receiver.GetComponent<Enemy>().Tick();
+						break;
+				}
 			}
-        }
 
-        //Boucle
-        secondsElapsed++;
-		Invoke("doTick", 1);
+			//Boucle
+			secondsElapsed++;
+			Invoke("doTick", 1);
+		}
+
 	}
 
 	//Fonctions mineures

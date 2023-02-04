@@ -42,13 +42,24 @@ public class Racine : MonoBehaviour
 		//printer(gameObject.name + " a reçu un tick !");
 
 		//Faire grandir la racine
-		growthPercentage = growthPercentage + growthPerTick;
+		growthPercentage = Mathf.Clamp(growthPercentage + growthPerTick, 0, 100);
+		GameObject.Find("GAMEMANAGER").GetComponent<GAMEMANAGER>().STAT_CROISSANCE = Mathf.RoundToInt(growthPercentage);
+		if (growthPercentage >= 100)
+		{
+			Time.timeScale = 0;
+			Debug.LogError("GAGNE !");
+		}
 	}
 
 	public void TakeDamage(float damage)
 	{
 		printer("La racine pris " + damage + " dégâts ! Vie restante : " + hp);
 		hp = hp + (damage * -1);
+		if (hp <= 0)
+		{
+			Time.timeScale = 0;
+			Debug.LogError("PERDU !");
+		}
 	}
 
 	//Fonctions mineures
