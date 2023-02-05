@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GAMEMANAGER : MonoBehaviour
@@ -20,7 +21,11 @@ public class GAMEMANAGER : MonoBehaviour
 
 	[Header("DEBUG")]
     [SerializeField] private bool doPrint = false;
-    [Header("Indicateures")]
+	[Space]
+	[Space]
+	[Header("Préparation")]
+	[SerializeField] private GameObject PF_Champi;
+    [Header("Indicateurs")]
     [SerializeField] private List<GameObject> allBouts;
 	[Space]
 	[Space]
@@ -70,6 +75,10 @@ public class GAMEMANAGER : MonoBehaviour
 					case "Enemy_Fourmi":
 						receiver.GetComponent<Enemy>().Tick();
 						break;
+
+					case "Champi":
+						receiver.GetComponent<Champi>().Tick();
+						break;
 				}
 			}
 
@@ -89,7 +98,16 @@ public class GAMEMANAGER : MonoBehaviour
         }
     }
 
-    private void printer(object message)
+	private void spawnChampi()
+	{
+		if (GameObject.Find("Champi") == null || GameObject.Find("Champi (Clone)") == null)
+		{
+			Instantiate(PF_Champi, new Vector3(0.112f, 3.329f, -0.0077255f), Quaternion.identity);
+		}
+	}
+
+
+	private void printer(object message)
     {
         if (doPrint)
         {

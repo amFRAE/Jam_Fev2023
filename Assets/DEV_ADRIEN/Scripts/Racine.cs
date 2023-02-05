@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Racine : MonoBehaviour
 {
@@ -42,6 +43,7 @@ public class Racine : MonoBehaviour
 	private void Update()
 	{
 		Indicateurs();
+		GameObject.Find("Slider_HP").GetComponent<Slider>().value = hp;
 	}
 
 	//Fonctions majeures
@@ -49,6 +51,7 @@ public class Racine : MonoBehaviour
 	{
 		//Références
 		GameObject RacineSprites = transform.Find("_Sprites").gameObject;
+		GameObject RacineObjects = transform.Find("_Racines").gameObject;
 
 		//Faire grandir la racine
 		growthPercentage = Mathf.Clamp(growthPercentage + growthPerTick, 0, 100);
@@ -60,6 +63,8 @@ public class Racine : MonoBehaviour
 			if (!r1)
 			{
 				RacineSprites.transform.Find("1").GetComponent<Animation>().Play();
+				RacineSprites.transform.Find("1").gameObject.SetActive(true);
+				GameObject.Find("SFX_Root").GetComponent<AudioSource>().Play();
 				r1 = true;
 			}
 		}
@@ -68,6 +73,8 @@ public class Racine : MonoBehaviour
 			if (!r2)
 			{
 				RacineSprites.transform.Find("2").GetComponent<Animation>().Play();
+				RacineSprites.transform.Find("2").gameObject.SetActive(true);
+				GameObject.Find("SFX_Root").GetComponent<AudioSource>().Play();
 				r2 = true;
 			}
 		}
@@ -76,6 +83,7 @@ public class Racine : MonoBehaviour
 			if (!r3)
 			{
 				RacineSprites.transform.Find("3").GetComponent<Animation>().Play();
+				RacineSprites.transform.Find("3").gameObject.SetActive(true);
 				r3 = true;
 			}
 		}
@@ -84,6 +92,8 @@ public class Racine : MonoBehaviour
 			if (!r4)
 			{
 				RacineSprites.transform.Find("4").GetComponent<Animation>().Play();
+				RacineSprites.transform.Find("4").gameObject.SetActive(true);
+				GameObject.Find("SFX_Root").GetComponent<AudioSource>().Play();
 				r4 = true;
 			}
 		}
@@ -92,6 +102,8 @@ public class Racine : MonoBehaviour
 			if (!r5)
 			{
 				RacineSprites.transform.Find("5").GetComponent<Animation>().Play();
+				RacineSprites.transform.Find("5").gameObject.SetActive(true);
+				GameObject.Find("SFX_Root").GetComponent<AudioSource>().Play();
 				r5 = true;
 			}
 		}
@@ -100,6 +112,8 @@ public class Racine : MonoBehaviour
 			if (!r6)
 			{
 				RacineSprites.transform.Find("6").GetComponent<Animation>().Play();
+				RacineSprites.transform.Find("6").gameObject.SetActive(true);
+				GameObject.Find("SFX_Root").GetComponent<AudioSource>().Play();
 				r6 = true;
 			}
 

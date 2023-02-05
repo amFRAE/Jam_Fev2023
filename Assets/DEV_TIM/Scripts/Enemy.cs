@@ -1,8 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.PackageManager.Requests;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
@@ -49,7 +48,7 @@ public class Enemy : MonoBehaviour
 	private void FixedUpdate()
     {
         Move();
-    }
+	}
 	private void OnTriggerEnter2D(Collider2D col)
 	{
         if (col.gameObject.tag == "Racine_Bout")
@@ -58,6 +57,10 @@ public class Enemy : MonoBehaviour
             if (gameObject.tag == "Enemy_Fourmi")
             {
 				transform.Find("Fourmis_Anim").GetComponent<Animator>().SetBool("attacking", true);
+			}
+			else if (gameObject.tag == "Enemy_Ver")
+			{
+				transform.Find("Verre_de_terre_Animation").GetComponent<Animator>().SetBool("Push", true);
 			}
 		}
 	}
@@ -68,11 +71,12 @@ public class Enemy : MonoBehaviour
         if(Input.GetMouseButtonDown(0) && cursor)
         {
             hp--;
-        }
-        if(hp <= 0)
+			GameObject.Find("SFX_InsectHit").GetComponent<AudioSource>().Play();
+		}
+		if (hp <= 0)
         {
-            //Se retirer de la liste des objets devant recevoir des ticks
-            GameObject.Find("GAMEMANAGER").GetComponent<GAMEMANAGER>().tickReceiver.Remove(this.gameObject);
+			//Se retirer de la liste des objets devant recevoir des ticks
+			GameObject.Find("GAMEMANAGER").GetComponent<GAMEMANAGER>().tickReceiver.Remove(this.gameObject);
             GameObject.Find("GAMEMANAGER").GetComponent<GAMEMANAGER>().STAT_INSECT++;
 
 			Destroy(gameObject);
@@ -101,6 +105,7 @@ public class Enemy : MonoBehaviour
         if (surRacine)
         {
             GameObject.FindGameObjectWithTag("Racine").GetComponent<Racine>().TakeDamage(damage);
+            GameObject.Find("SFX_HitRoots").GetComponent<AudioSource>().Play();
         }
     }
 

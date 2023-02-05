@@ -48,7 +48,7 @@ MonoBehaviour:
   PF_Fourmi: {fileID: 2681775162947261451, guid: 3dd73991ae2866e4888ae8c76e0fa147, type: 3}
   PF_Ver: {fileID: 4854579062537729738, guid: 20ecb459c7a62e5448a81972b9fadcd6, type: 3}
   PF_Grillon: {fileID: 7101120080467353117, guid: 0397c02781786d542bca4226241cba75, type: 3}
-  SpawnTime: 2
+  SpawnTime: 2.5
   SpawnTimeReduction: 0.025
 --- !u!1 &1862369689512749146
 GameObject:
@@ -96,5 +96,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doPrint: 1
+  PF_Champi: {fileID: 4803558627655326155, guid: 041a627331e993e47893dd72a485310e, type: 3}
   allBouts: []
   tickRate: 1
