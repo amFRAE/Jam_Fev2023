@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 
-[ExecuteInEditMode]
 public class Score : MonoBehaviour
 {
     public TextMeshProUGUI stats;
@@ -18,9 +17,9 @@ public class Score : MonoBehaviour
         {
             if (SceneManager.GetActiveScene().name == "Game" || SceneManager.GetActiveScene().name == "DEV_ADRIEN")
             {
-                stats.text = preText + GAMEMANAGER.i.STAT_INSECT.ToString();
-            }
-            else
+				stats.text = preText + GameObject.Find("GAMEMANAGER").GetComponent<GAMEMANAGER>().STAT_INSECT.ToString();
+			}
+			else
             {
                 stats.text = preText + "0";
             }
@@ -29,8 +28,8 @@ public class Score : MonoBehaviour
         {
             if (SceneManager.GetActiveScene().name == "Game" || SceneManager.GetActiveScene().name == "DEV_ADRIEN")
             {
-                stats.text = preText + GAMEMANAGER.i.STAT_CHAMPI.ToString();
-            }
+                stats.text = preText + GameObject.Find("GAMEMANAGER").GetComponent<GAMEMANAGER>().STAT_CHAMPI.ToString();
+			}
             else
             {
                 stats.text = preText + "0";
@@ -40,7 +39,7 @@ public class Score : MonoBehaviour
         {
             if (SceneManager.GetActiveScene().name == "Game" || SceneManager.GetActiveScene().name == "DEV_ADRIEN")
             {
-                stats.text = preText + GAMEMANAGER.i.STAT_CHAMPI.ToString();
+                stats.text = preText + GameObject.Find("GAMEMANAGER").GetComponent<GAMEMANAGER>().STAT_CROISSANCE.ToString();
             }
             else
             {

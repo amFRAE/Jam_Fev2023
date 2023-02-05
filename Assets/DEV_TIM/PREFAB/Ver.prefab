@@ -116,7 +116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cursor: 0
   hp: 2
-  speed: 3
+  speed: 4
   damage: 3
 --- !u!114 &4854579062537729741
 MonoBehaviour:

@@ -71,7 +71,7 @@ public class Enemy : MonoBehaviour
         if(Input.GetMouseButtonDown(0) && cursor)
         {
             hp--;
-			GameObject.Find("SFX_InsectHit").GetComponent<AudioSource>().Play();
+			GameObject.Find("SFX_InsectHit").GetComponent<AudioSource>().Play(); 
 		}
 		if (hp <= 0)
         {

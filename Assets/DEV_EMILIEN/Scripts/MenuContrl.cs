@@ -8,5 +8,6 @@ public class MenuContrl : MonoBehaviour
     public void ChangeScene(string _sceneName)
     {
         SceneManager.LoadScene(_sceneName);
-    }
+		Time.timeScale = 1;
+	}
 }

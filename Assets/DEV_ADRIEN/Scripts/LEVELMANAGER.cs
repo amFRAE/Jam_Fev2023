@@ -69,7 +69,7 @@ public class LEVELMANAGER : MonoBehaviour
 			Instantiate(PF_Fourmi, Spawns[id].transform.position, Quaternion.identity);
 		}
 
-        SpawnTime = SpawnTime - SpawnTimeReduction;
+        SpawnTime = Mathf.Clamp(SpawnTime - SpawnTimeReduction, 0.8f, Mathf.Infinity);
 		Invoke("Spawn", SpawnTime);
 	}
 

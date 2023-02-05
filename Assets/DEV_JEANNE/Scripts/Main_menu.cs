@@ -14,24 +14,31 @@ public class Main_menu : MonoBehaviour
     public void StartGame()
     {
         buttonclick.Play();
+        GameObject.Find("SFX_Button").GetComponent<AudioSource>().Play();
         SceneManager.LoadScene(levelToLoad);
     }
 
     public void OpenHowtoPlayWindow()
     {
         buttonclick.Play();
-        HowtoPlayWindow1.SetActive(true);
+		GameObject.Find("SFX_Button").GetComponent<AudioSource>().Play();
+
+		HowtoPlayWindow1.SetActive(true);
     }
 
     public void OpenCreditsWindow()
     {
         buttonclick.Play();
-        creditsWindow.SetActive(true);
+		GameObject.Find("SFX_Button").GetComponent<AudioSource>().Play();
+
+		creditsWindow.SetActive(true);
     }
     public void OpenSettingsWindow()
     {
         buttonclick.Play();
-        settingsWindow.SetActive(true);
+		GameObject.Find("SFX_Button").GetComponent<AudioSource>().Play();
+
+		settingsWindow.SetActive(true);
     }
     public void OpenNextPageHTP()
     {
@@ -42,34 +49,46 @@ public class Main_menu : MonoBehaviour
     public void CloseNextPageHTP()
     {
         buttonclick.Play();
-        HowtoPlayWindow2.SetActive(false);
+		GameObject.Find("SFX_Button").GetComponent<AudioSource>().Play();
+
+		HowtoPlayWindow2.SetActive(false);
     }
     public void ReturnPastPageHTP()
     {
         buttonclick.Play();
-        HowtoPlayWindow2.SetActive(false);
+		GameObject.Find("SFX_Button").GetComponent<AudioSource>().Play();
+
+		HowtoPlayWindow2.SetActive(false);
         HowtoPlayWindow1.SetActive(true);
     }
     public void CloseHowtoPlayWindow()
     {
         buttonclick.Play();
-        HowtoPlayWindow1.SetActive(false);
+		GameObject.Find("SFX_Button").GetComponent<AudioSource>().Play();
+
+		HowtoPlayWindow1.SetActive(false);
     }
 
     public void CloseCreditsWindow()
     {
         buttonclick.Play();
-        creditsWindow.SetActive(false);
+		GameObject.Find("SFX_Button").GetComponent<AudioSource>().Play();
+
+		creditsWindow.SetActive(false);
     }
     public void CloseSettingsWindow()
     {
         buttonclick.Play();
-        settingsWindow.SetActive(false);
+		GameObject.Find("SFX_Button").GetComponent<AudioSource>().Play();
+
+		settingsWindow.SetActive(false);
     }
 
     public void QuitGame()
     {
         buttonclick.Play();
-        Application.Quit();
+		GameObject.Find("SFX_Button").GetComponent<AudioSource>().Play();
+
+		Application.Quit();
     }
 }

@@ -128,7 +128,7 @@ public class Racine : MonoBehaviour
 		if (hp <= 0)
 		{
 			Time.timeScale = 0;
-			Debug.LogError("PERDU !");
+			GameObject.Find("CANVAS_LOOSE").transform.Find("go").gameObject.SetActive(true);
 		}
 	}
 
@@ -154,6 +154,8 @@ public class Racine : MonoBehaviour
 	private void WIN()
 	{
 		Time.timeScale = 0;
+		GameObject.Find("Image").SetActive(false);
+		GameObject.Find("CANVAS_WIN").transform.Find("go").gameObject.SetActive(true);
 		Debug.LogError("GAGNE !");
 	}
 }
