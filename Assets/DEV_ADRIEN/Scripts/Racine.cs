@@ -6,10 +6,19 @@ public class Racine : MonoBehaviour
 {
 	//Variables internes
 	private float growthPercentage = 0;
+	private bool r1 = false;
+	private bool r2 = false;
+	private bool r3 = false;
+	private bool r4 = false;
+	private bool r5 = false;
+	private bool r6 = false;
+
 
 	//Variables static
 	public static Racine i = null;
 
+	[Header("Préparation")]
+	[SerializeField] private AnimationClip racineGrowth;
 	[Header("DEBUG")]
 	[SerializeField] private bool doPrint = false;
 	[Space]
@@ -38,16 +47,63 @@ public class Racine : MonoBehaviour
 	//Fonctions majeures
 	public void Tick()
 	{
-		//Donner info si on print
-		//printer(gameObject.name + " a reçu un tick !");
+		//Références
+		GameObject RacineSprites = transform.Find("_Sprites").gameObject;
 
 		//Faire grandir la racine
 		growthPercentage = Mathf.Clamp(growthPercentage + growthPerTick, 0, 100);
 		GameObject.Find("GAMEMANAGER").GetComponent<GAMEMANAGER>().STAT_CROISSANCE = Mathf.RoundToInt(growthPercentage);
-		if (growthPercentage >= 100)
+
+
+		if (growthPercentage >= 14.29f && growthPercentage < 28.58f) //Si entre 14.29% et 28.57% inclus
 		{
-			Time.timeScale = 0;
-			Debug.LogError("GAGNE !");
+			if (!r1)
+			{
+				RacineSprites.transform.Find("1").GetComponent<Animation>().Play();
+				r1 = true;
+			}
+		}
+		else if (growthPercentage >= 28.58f && growthPercentage < 42.87f)
+		{
+			if (!r2)
+			{
+				RacineSprites.transform.Find("2").GetComponent<Animation>().Play();
+				r2 = true;
+			}
+		}
+		else if (growthPercentage >= 42.87f && growthPercentage < 57.16f)
+		{
+			if (!r3)
+			{
+				RacineSprites.transform.Find("3").GetComponent<Animation>().Play();
+				r3 = true;
+			}
+		}
+		else if (growthPercentage >= 57.16f && growthPercentage < 71.45f)
+		{
+			if (!r4)
+			{
+				RacineSprites.transform.Find("4").GetComponent<Animation>().Play();
+				r4 = true;
+			}
+		}
+		else if (growthPercentage >= 71.45f && growthPercentage < 85.74f)
+		{
+			if (!r5)
+			{
+				RacineSprites.transform.Find("5").GetComponent<Animation>().Play();
+				r5 = true;
+			}
+		}
+		else if (growthPercentage >= 100)
+		{
+			if (!r6)
+			{
+				RacineSprites.transform.Find("6").GetComponent<Animation>().Play();
+				r6 = true;
+			}
+
+			Invoke("WIN", racineGrowth.length);
 		}
 	}
 
@@ -80,5 +136,10 @@ public class Racine : MonoBehaviour
 		{
 			i = this;
 		}
+	}
+	private void WIN()
+	{
+		Time.timeScale = 0;
+		Debug.LogError("GAGNE !");
 	}
 }

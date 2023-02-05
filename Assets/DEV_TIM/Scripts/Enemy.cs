@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -53,8 +55,11 @@ public class Enemy : MonoBehaviour
         if (col.gameObject.tag == "Racine_Bout")
         {
             surRacine = true;
-            transform.Find("Fourmis_Anim").GetComponent<Animator>().SetBool("attacking", true);
-        }
+            if (gameObject.tag == "Enemy_Fourmi")
+            {
+				transform.Find("Fourmis_Anim").GetComponent<Animator>().SetBool("attacking", true);
+			}
+		}
 	}
 
 	//Fonctions majeures
@@ -68,8 +73,9 @@ public class Enemy : MonoBehaviour
         {
             //Se retirer de la liste des objets devant recevoir des ticks
             GameObject.Find("GAMEMANAGER").GetComponent<GAMEMANAGER>().tickReceiver.Remove(this.gameObject);
+            GameObject.Find("GAMEMANAGER").GetComponent<GAMEMANAGER>().STAT_INSECT++;
 
-            Destroy(gameObject);
+			Destroy(gameObject);
         }
     }
     private void Move()

@@ -77,7 +77,6 @@ public class GAMEMANAGER : MonoBehaviour
 			secondsElapsed++;
 			Invoke("doTick", 1);
 		}
-
 	}
 
 	//Fonctions mineures
